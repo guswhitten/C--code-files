@@ -20,23 +20,29 @@ Given an integer, convert it to a roman numeral.
 */
 
 class Solution {
-  public:
-    string intToRoman(int num) {
-    vector nums = {1,4,5,9,10,40,50,90,100,400,500,900,1000};
-    string str[] = {"I","IV","V","IX","X","XL","L","XC","C","CD","D","CM","M"};
-    string res = "";
-    int div;
-
-    int i = 12;
-    while(num > 0){
-        div = num/nums[i];
-        num = num%nums[i];
-        while(div--){
-            res += str[i];
+public:
+    string intToRoman(int num) 
+    {
+        string ans;
+string symbol[] = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
+        int val[] = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+        
+        for(int i=0; num != 0; i++)
+        {
+            while(num >= val[i])
+            {
+                num -= val[i];
+                ans += symbol[i];
+            }
         }
-        i--;
+        
+        return ans;
     }
-    
-    return res;
-}
 };
+/*
+Runtime 10ms
+Memory 6.1MB
+*/
+
+
+
