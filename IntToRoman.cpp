@@ -21,21 +21,17 @@ Given an integer, convert it to a roman numeral.
 
 class Solution {
 public:
-    string intToRoman(int num) 
-    {
+    string intToRoman(int num) {
         string ans;
-string symbol[] = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
-        int val[] = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+        string s[] = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
+        int nums[] = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
         
-        for(int i=0; num != 0; i++)
-        {
-            while(num >= val[i])
-            {
-                num -= val[i];
-                ans += symbol[i];
+        for(int i=0; num != 0; i++) {                                  //end for loop when num equals 0
+            while(num >= nums[i]) {                                    //iterate thru for-loop until the input int is greater than one of the roman numeral "intervals"
+                num -= nums[i];                                        //subtract interval from int            
+                ans += s[i];                                           //add corresponding roman numeral to end of string
             }
         }
-        
         return ans;
     }
 };
