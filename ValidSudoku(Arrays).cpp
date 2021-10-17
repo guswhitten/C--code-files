@@ -26,7 +26,7 @@ public:
                     int num = board[i][j] - '0' - 1, k = i / 3 * 3 + j / 3;
                     if(used1[i][num] || used2[j][num] || used3[k][num])
                         return false;
-                    used1[i][num] = used2[j][num] = used3[k][num] = 1;
+                    used1[i][num] = used2[j][num] = used3[k][num] = 1;          //set the 
                 }
         
         return true;
