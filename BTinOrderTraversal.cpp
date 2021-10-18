@@ -14,6 +14,11 @@ vector<int> inorderTraversal(TreeNode* root) {
     return v;
 }
 
+/*
+Runtime 4 ms
+Memory 10.5MB
+*/
+
 //stack solution
 class Solution {
 public:
