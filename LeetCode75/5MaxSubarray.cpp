@@ -12,8 +12,8 @@ public:
     int maxSubArray(vector<int>& nums) {
         int localMax=nums[0], globalMax=nums[0];
         for (int i = 1; i<nums.size(); ++i) {
-            localMax=max(localMax + nums[i], nums[i]);
-            globalMax=max(globalMax, localMax);            
+            localMax=max(localMax + nums[i], nums[i]);      //localMax will continue adding to sum (and subarray) so long as the next value in nums is less than the current sum
+            globalMax=max(globalMax, localMax);             //
         }
         
         return globalMax;
