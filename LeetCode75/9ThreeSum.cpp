@@ -11,21 +11,19 @@ Notice that the solution set must not contain duplicate triplets.
 class Solution {
 public:
     vector<vector<int>> threeSum(vector<int>& nums) {
-	std::vector<vector<int>> result;
+	vector<vector<int>> result;
 	if (nums.empty()) {
 		return result;
 	}
-
-	std::size_t n_size = nums.size();
-	std::sort(nums.begin(), nums.end());
-	for (int i = 0; i < n_size; ++i) {
+	sort(nums.begin(), nums.end());
+	for (int i = 0; i < nums.size(); ++i) {
 		// all numbers from now on will be greater than 0, no point in continuing
 		if (nums[i] > 0) break;
 
 		// we have seen this number & combo before; skip
 		if (i > 0 and nums[i] == nums[i-1]) continue;
 
-		int left = i+1, right = n_size - 1;
+		int left = i+1, right = nums.size() - 1;
 		while (left < right) {
 			int sum = nums[i] + nums[left] + nums[right];
 			if (sum < 0) {
