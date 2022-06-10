@@ -23,17 +23,41 @@ int coinChange(vector<int>& coins, int amount) {
         return cc <0 ? -1 : cc+1;
     }
 
-
-
-
-
-
-
-
-
-
-
 /*
-Runtime:
+Runtime: Time Limit Exceeded
 Memory:
 */
+
+// Solution 2
+// Memoization, Depth First Search
+
+class Solution {
+public:
+      int coinChange(vector<int>& coins, int amount) {
+        unordered_map<int,int> mem;
+        return coinChange(amount,mem,coins);    
+    }
+    int coinChange(int amount, unordered_map<int,int>& mem, vector<int>& coins) {
+        if(amount==0) return 0;
+        if(amount<0) return -1;
+        auto it = mem.find(amount);
+        if(it != mem.end()) return it->second;
+        int cc = amount+1;
+        for(int i=0;i<coins.size();i++) {
+            int coin = coinChange(amount-coins[i],mem,coins);
+            if(coin>=0) cc = min(cc,coin);
+        }
+        return mem[amount] = cc > amount ? -1 : cc+1;
+    }
+};
+
+/*
+Runtime: 483 ms
+Memory: 65.1 MB
+*/
+
+
+
+
+
+
