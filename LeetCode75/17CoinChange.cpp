@@ -56,7 +56,33 @@ Runtime: 483 ms
 Memory: 65.1 MB
 */
 
+// Solution 3
 
+class Solution {
+public:
+    int coinChange(vector<int>& coins, int amount) {
+            
+    //create vector need w/ size (amount+1) all w/ values (amount+1)
+    vector<int> need(amount+1, amount+1); 
+            
+    //first value of need is 0
+    need[0] = 0;
+    sort(coins.begin(), coins.end());    
+    //iterate thru coins vector
+    for (int c : coins)
+        
+        //then iterate thru every 
+        for (int a=c; a<=amount; a++)
+            //
+            need[a] = min(need[a], need[a-c] + 1);
+    return need.back() > amount ? -1 : need.back();
+    }
+};
+
+/*
+Runtime: 69 ms
+Memory: 14.5 MB
+*/
 
 
 
