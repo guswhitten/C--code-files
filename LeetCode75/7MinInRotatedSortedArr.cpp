@@ -18,19 +18,29 @@ public:
     int findMin(vector<int>& nums) {
         int start=0, end=nums.size()-1;
         while (start<end) {
+            
+            //only way first index is less than last index is first index is min value
             if (nums[start] < nums[end]) {
                 return nums[start];
             }
             
+            //cut array in half
             int mid = (start+end)/2;
             
+            //check which half has min value in it
             if (nums[mid] < nums[end]) {
+                
+                //min is in first half, so stop checking back half
                 end=mid;
             }
             else {
+                
+                //min is in back half, so stop checking first half
                 start=mid+1;
             }
         }
+        
+        //when loop ends, start==end so return nums[start] OR nums[end]
         return nums[start];
     }
 };
