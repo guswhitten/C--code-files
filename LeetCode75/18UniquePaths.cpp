@@ -11,12 +11,20 @@ The test cases are generated so that the answer will be less than or equal to 2 
 class Solution {
 public:
     int uniquePaths(int m, int n) {
-        vector<vector<int>> dp(m, vector<int>(n, 1));   //mxn matrix of all 1's
-        for (int i = 1; i < m; i++) {
-            for (int j = 1; j < n; j++) {
-                dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
+        
+        //create m x n matrix of all 1's
+        vector<vector<int>> dp(m, vector<int>(n, 1));  
+        
+        //two FOR loops to iterate thru whole 2d matrix
+        for (int i = 1; i < m; i++) {       //row #
+            for (int j = 1; j < n; j++) {   //col #
+                
+                //each square is simply the sum of the ones above and to the left of it
+                dp[i][j] = dp[i - 1][j] + dp[i][j - 1];     
             }
         }
+        
+        //return the bottom right cell of the matrix
         return dp[m - 1][n - 1];
     }
 };
