@@ -23,6 +23,6 @@ public:
 
 
 /*
-Runtime: 
-Memory: 
+Runtime: 0ms
+Memory: 6.6 MB
 */
