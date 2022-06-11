@@ -11,20 +11,25 @@ A subarray is a contiguous subsequence of the array.
 class Solution {
 public:
     int maxProduct(vector<int>& nums) {
-        int res=nums[0], l = 1, r = 1,n=nums.size();
-        for (int i = 0; i < n; ++i) {
-            l=l*nums[i];
-            r=r*nums[n-1-i];
-            res=max(res,max(l,r));
-            if(l==0) l=1;
-            if(r==0) r=1;
+        int Gmax=INT_MIN, Lmax=1;       
+        
+        //iterate forward. find max product subarray before last negative in array
+        for (int i = 0; i < nums.size(); i++) {
+            Gmax=max(Lmax *= nums[i], Gmax);
+            if (nums[i] == 0) {Lmax = 1;}
         }
-        return res;
+        Lmax=1;
+        //iterate backwards
+        for (int i = nums.size()-1; i>=0; i--) {
+            Gmax=max(Lmax *= nums[i], Gmax);
+            if (nums[i] == 0) {Lmax = 1;}
+        }
+        return Gmax;
     }
 };
 
 /*
-Runtime: 18 ms
-Memory Usage: 13.8 MB
+Runtime: 24 ms
+Memory Usage: 13.9 MB
 */
 
