@@ -13,22 +13,16 @@ Notice that you may not slant the container.
 class Solution {
 public:
     int maxArea(vector<int>& height) {
-        int maxx=0, i=0, j=height.size()-1;
-        while (i < j) {
-            maxx=max(maxx, (j-i)*min(height[i],height[j]));
-            if (height[i] < height[j]) {
-                i++;
-            }
-            else {
-                j--;
-            }
+        int left = 0, right = height.size()-1, maxArea=0;
+        while (left < right) {
+            maxArea = max(maxArea, (right-left)*min(height[left],height[right]));
+            height[left] < height[right] ? left++ : right--;
         }
-        return maxx;
-        
+        return maxArea;
     }
 };
 
 /*
-Runtime: 124ms
+Runtime: 93ms
 Memory: 59MB
 */
