@@ -18,6 +18,41 @@ Given a string s containing only digits, return the number of ways to decode it.
 
 The test cases are generated so that the answer fits in a 32-bit integer.
 */
+
+//DECODE FORWARDS
+class Solution {
+public:
+    int numDecodings(string s) {
+        int n = s.size();
+        
+        vector<int> dp(n+1,0);
+        dp[0] = 1;
+        
+        for(int i=1;i<=n;i++) {
+            char c = s[i-1];
+            int cc = s[i-1] - '0';
+            if(cc>=1 and cc<=9)
+                dp[i] += dp[i-1];
+            
+            if(i==1) continue;
+            char prev = s[i-2];
+            int pp = prev-'0';
+            int nn = pp*10 + cc;
+            if(nn>=10 and nn<=26) {
+                dp[i] += dp[i-2];
+            }
+        }
+       return dp[n];
+    }
+};
+  
+/*
+Runtime: 3ms
+Memory: 6.3MB
+*/
+
+/*********************************************************************************************************/
+
 //DECODE BACKWARDS
 class Solution {
 public:
@@ -51,34 +86,3 @@ Runtime: 0 ms
 Memory: 6.1 MB
 */
 
-//DECODE FORWARDS
-class Solution {
-public:
-    int numDecodings(string s) {
-        int n = s.size();
-        
-        vector<int> dp(n+1,0);
-        dp[0] = 1;
-        
-        for(int i=1;i<=n;i++) {
-            char c = s[i-1];
-            int cc = s[i-1] - '0';
-            if(cc>=1 and cc<=9)
-                dp[i] += dp[i-1];
-            
-            if(i==1) continue;
-            char prev = s[i-2];
-            int pp = prev-'0';
-            int nn = pp*10 + cc;
-            if(nn>=10 and nn<=26) {
-                dp[i] += dp[i-2];
-            }
-        }
-       return dp[n];
-    }
-};
-  
-/*
-Runtime: 3ms
-Memory: 6.3MB
-*/
