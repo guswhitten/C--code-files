@@ -7,14 +7,12 @@ The test cases are generated so that the answer can fit in a 32-bit integer.
 
 class Solution {
 public:
-
     void Sum(vector<int>& candidates, int target, vector<vector<int> >& res, vector<int>& r, int i)
     {
         if(target == 0) { // if we get exact answer
             res.push_back(r);
-            return;
+            return; 
         }
-        
         while(i <  candidates.size() && target - candidates[i] >= 0) { // Till every element in the array starting from i is checked
             r.push_back(candidates[i]); // add them to vector
             Sum(candidates,target - candidates[i],res,r,i); // recur for next numbers
