@@ -6,6 +6,8 @@ array represents your maximum jump length at that position.
 Return true if you can reach the last index, or false otherwise.
 */
 
+
+//GREEDY soln.
 class Solution {
 public:
     bool canJump(vector<int>& nums) {
