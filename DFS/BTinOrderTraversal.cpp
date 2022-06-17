@@ -5,12 +5,12 @@ Given the root of a binary tree, return the inorder traversal of its nodes' valu
 //recurive solution
 vector<int> v;
 vector<int> inorderTraversal(TreeNode* root) {
-    if(root == NULL) {
+    if(root == NULL) {              //always check for END of BRANCH
       return v;
     }
-    inorderTraversal(root->left);
-    v.push_back(root->val);
-    inorderTraversal(root->right);
+    inorderTraversal(root->left);   //IN ORDER checks left branch until NULL found
+    v.push_back(root->val);         //then pushes root
+    inorderTraversal(root->right);  //then checks right branch until NULL found
     return v;
 }
 
