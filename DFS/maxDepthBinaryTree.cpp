@@ -20,8 +20,8 @@ along the longest path from the root node down to the farthest leaf node.
 class Solution {
 public:
     int maxDepth(TreeNode* root) {
-        if (!root) return 0;
-        int maxLeft = maxDepth(root -> left);
+        if (!root) return 0;            //reached a NULL node. go back up one level
+        int maxLeft = maxDepth(root -> left); 
         int maxRight = maxDepth(root -> right);
         
         return max(maxLeft, maxRight) +1;
