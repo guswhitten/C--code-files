@@ -21,32 +21,19 @@ could also be considered as a subtree of itself.
  */
 class Solution {
 public:
-   
-   bool isSametree(TreeNode* s, TreeNode* t){
-       //if any of the tree is null then there is no need to compare 
-       if(!s || !t){
-           //if either of them are null both of them need to be null to be true
-           return s==NULL && t==NULL;
+   bool isSametree(TreeNode* s, TreeNode* t) { 
+       if(!s || !t) {                           //if either tree is NULL
+           return s==NULL && t==NULL;           //just check if both are NULL, return true if so
        } //now since both are not null check if they have same value otherwise return false
-       else if(s->val == t->val){
-           //if value is same then check if both its left and right sub-tree are same          
+       else if(s->val == t->val) {              //else if both have same value, keep comparing trees          
            return isSametree(s->left,t->left) && isSametree(s->right,t->right);
        }
-       else{
-           return false;
-       }
+       else return false;                        //if trees have different values
    }
    bool isSubtree(TreeNode* s, TreeNode* t) {
-         if(!s){
-             //if main tree is null then return false
-             return false;
-         }   
-         else if(isSametree(s,t)){
-             //check if s and t are same, if yes return true
-             return true;
-         }
-         else{
-             //if s and t are not same then pass left and right nodes, and check same for that nodes as well as its child nodes.
+         if(!s) return false;                   //if main tree is NULL, return false (trees cannot be equal)
+         else if (isSametree(s,t)) return true; //call isSametree
+         else {
              return isSubtree(s->left,t) || isSubtree(s->right,t);
          }
    }
