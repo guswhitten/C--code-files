@@ -5,21 +5,21 @@ Given a string s, find the length of the longest substring without repeating cha
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
-        vector<int> dict(256, -1);           //vector of size 256 to account for entire ASCII table
-        int maxLen = 0, start = -1;
-        for (int i = 0; i < s.length(); i++) {
-            if (dict[s[i]] > start)         //TRUE if this character has been seen before
-                //start keeps track of the index (right before the one) that begins our LOCALLY LONGEST STRING
-                start = dict[s[i]];         //update start to signal a new string
-            dict[s[i]] = i;                 //value at each index of dict records LAST INDEX AT WHICH the current letter was last seen
-            //i - start     -->     checks the length of the current 
-            maxLen = max(maxLen, i - start); 
+        int dict[256]={0}, l=0, r=0, ans=0;
+        while(r<s.length()) {   //iterate over the string till the right pointer reaches the end of the string 
+            dict[s[r]]++;      //increment the count of the character present in the right pointer 
+            while(dict[s[r]]>1) {   //if the occurence become more than 1 means the char is repeated 
+                dict[s[l]]--;   //reduce the occurence of temp as it might be present ahead also in the string
+                l++;         //contraction of the present window till the occurence of the 't' char becomes 1
+            }
+            ans = max(ans,r-l+1);    //As the index starts from 0 , ans will be (right pointer-left pointer + 1)
+            r++;
         }
-        return maxLen;
+        return ans;
     }
 };
 
 /*
-Runtime: 12 ms
-Memory: 8.3 MB
+Runtime: 3 ms
+Memory: 6.8 MB
 */
