@@ -24,6 +24,6 @@ public:
 };
 
 /*
-Runtime: 
-Memory: 
+Runtime: 70 ms
+Memory: 19.5 MB
 */
