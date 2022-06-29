@@ -9,16 +9,17 @@ different word or phrase, typically using all the original letters exactly once.
 class Solution {
 public:
     vector<vector<string>> groupAnagrams(vector<string>& strs) {
-		if(strs.size() == 1) return {{strs[0]}};
+	if(strs.size() == 1) return {{strs[0]}};
         vector<vector<string>> ans;
-        unordered_map<string, vector<string>> M;
+        unordered_map<string, vector<string>> um; //map single string with a vector of strings
         for(int  i = 0; i < strs.size(); i++) {
-            string str = strs[i];
-            sort(strs[i].begin(), strs[i].end()); // Sorting the string
-            M[strs[i]].push_back(str);  // Sorted string is the key and the value is the initial string
+            string str = strs[i];		//preserve original string (before sort)
+            sort(strs[i].begin(), strs[i].end()); // sort string
+            um[strs[i]].push_back(str);  // sorted string is key; value is vector of (original) strings
         }
-        for(auto i = M.begin(); i != M.end(); i++)
-            ans.push_back(i -> second);  // Traversing the map and adding the vectors of string to ans
+        for(auto i = um.begin(); i != um.end(); i++)	//iterate thru map
+		//i->first is KEY (sorted string); i->second is VALUE (array of original strings)
+            ans.push_back(i -> second);  // i->second is array of anagram strings.
         return ans;
     }
 };
