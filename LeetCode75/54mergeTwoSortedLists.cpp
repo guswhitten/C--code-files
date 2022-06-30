@@ -20,6 +20,18 @@ Return the head of the merged linked list.
 class Solution {
 public:
     ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
+        //strategy (iterative):
+        //maintain head pointer (will have to return later)
+        //declare tail pointer (will change every iteration)
+        //ensure both lists are non-empty
+        //assign tail pointer to head pointer of list with SMALLEST value
+        //while (lists are non NULL)
+        //  if (list1 < list2): merge list1 node
+        //  otherwise: merge list2 node
+        //when a list hits NULL, while loop will end, so
+        //add the rest of the other list to the end of the merged list
+        //return head pointer
+        
         ListNode* mergedHead = list1;    //pointer at head
         if (!list1) return list2;
         if (!list2) return list1;
