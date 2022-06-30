@@ -15,19 +15,18 @@ Given the head of a singly linked list, reverse the list, and return the reverse
 class Solution {
 public:
     ListNode* reverseList(ListNode* head) {
-        //If linked list is empty then return head
-        if(head==NULL)return head;
+        if(head==NULL)return head; //If linked list is empty then return head
         stack<int> s;
-        ListNode *temp=head;
+        ListNode *temp=head;       //points temp to the same value as head
+        while(temp!=NULL){         //iterate thru given linked list
+            s.push(temp->val);     //push each int into the stack
+            temp=temp->next;       //move to next value
+        }                          //while loop closes when temp->NULL
+        temp=head;                 //point temp once again to start of head
         while(temp!=NULL){
-            s.push(temp->val);
-            temp=temp->next;
-        }
-        temp=head;
-        while(temp!=NULL){
-            temp->val=s.top();
-            s.pop();
-            temp=temp->next;
+            temp->val=s.top();     //this time overwrite list values, drawing from the stack
+            s.pop();               //pop as you go
+            temp=temp->next;       //
         }
         return head;
     }
