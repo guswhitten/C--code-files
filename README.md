@@ -3,8 +3,9 @@ C++ LeetCode problems and solutions
 
 
 ## Topics to come back to:
-- Dynamic Programming
+- String
 - Graph
 - Linked List
-- String
-- Heap
+- Breadth-First Search
+- Dynamic Programming
+- Heap (priority_queue)
