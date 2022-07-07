@@ -16,12 +16,13 @@ only once. Return the linked list sorted as well.
 class Solution {
 public:
     ListNode* deleteDuplicates(ListNode* head) {
-        ListNode* cur = head;
-        while(cur) {
+        ListNode* cur = head;                               //declare cur to maintain 'head' pointer
+        while(cur) {                                        //simply walk thru the LL
         	while(cur->next && cur->val == cur->next->val) {
+                //if next node is non-NULL, && next value is duplicate
         		cur->next = cur->next->next;
         	}
-        	cur = cur->next;
+        	cur = cur->next;                                //simply walk thru the LL
         }
         return head;
     }
