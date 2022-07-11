@@ -8,6 +8,29 @@ We will use the integers 0, 1, and 2 to represent the color red, white, and blue
 You must solve this problem without using the library's sort function.
 */
 
+class Solution {
+public:
+    void sortColors(vector<int>& nums) {
+        int low = 0, mid = 0, high = nums.size()-1;
+        while (mid <= high) {
+            switch (nums[mid]) {
+                case 0: 
+                    swap(nums[low], nums[mid]);
+                    low++; mid++;
+                    break;
+                case 1: 
+                    mid++;
+                    break;
+                case 2: 
+                    swap(nums[mid], nums[high]);
+                    high--;
+                    break;
+            }
+        }
+        return;
+        
+    }
+};
 
 /*
 Runtime: 5 ms
