@@ -18,7 +18,6 @@ public:
         //O(2n) time
         queue<int> pos;
         queue<int> neg;
-        vector<int> ans(nums.size());
         int count=2;
         for (auto n:nums) {
             if (n < 0) neg.push(n);
@@ -26,21 +25,20 @@ public:
         }
         for (int i = 0; i < nums.size(); i++) {
             if (count%2==0) {
-                ans[i]=pos.front();
+                nums[i]=pos.front();
                 pos.pop();
             }
             else {
-                ans[i]=neg.front();
+                nums[i]=neg.front();
                 neg.pop();
             }
             count++;
         }
-        return ans;
+        return nums;
     }
 };
 
-
 /*
-Runtime: 506 ms
-Memory: 129.8 MB
+Runtime: 343 ms
+Memory: 129.7 MB
 */
