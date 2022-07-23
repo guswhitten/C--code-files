@@ -70,7 +70,6 @@ public:
     sort(coins.begin(), coins.end());    
     //iterate thru coins vector
     for (int c : coins)
-        
         //then iterate thru every 
         for (int a=c; a<=amount; a++)
             //
